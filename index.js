@@ -1,5 +1,7 @@
 const cors = require("cors");
 const express = require("express");
+const morgan = require("morgan");
+const fileUpload = require("express-fileupload");
 const { BASE_URL, PORT } = require("./src/config");
 const app = express();
 
@@ -10,6 +12,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(morgan("dev"));
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
 
 const initRoutes = require("./src/routes");
 

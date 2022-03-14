@@ -19,6 +19,7 @@ const getListFiles = (req, res) => {
     res.status(200).send(fileInfos);
   });
 };
+
 const download = (req, res) => {
   const fileName = req.params.name;
   const directoryPath = __basedir + "/static/";
@@ -30,7 +31,15 @@ const download = (req, res) => {
     }
   });
 };
+
+const upload = (req, res) => {
+  res.status(200).send({
+    message: "file uploaded " + err,
+  });
+};
+
 module.exports = {
   getListFiles,
   download,
+  upload,
 };
