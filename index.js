@@ -1,21 +1,21 @@
-const cors = require('cors')
-const express = require('express')
-const { BASE_URL, PORT } = require('./src/config')
-const app = express()
+const cors = require("cors");
+const express = require("express");
+const { BASE_URL, PORT } = require("./src/config");
+const app = express();
 
 global.__basedir = __dirname;
 
 const corsOptions = {
-  origin: BASE_URL
-}
+  origin: BASE_URL,
+};
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
-const initRoutes = require('./src/routes')
+const initRoutes = require("./src/routes");
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
-initRoutes(app)
+initRoutes(app);
 app.listen(PORT, () => {
-  console.log(`Running at localhost:${PORT}`)
-})
+  console.log(`Running at localhost:${PORT}`);
+});
