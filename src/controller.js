@@ -1,7 +1,8 @@
 const fs = require("fs");
-const baseUrl = "http://localhost:8080/files/";
+const { BASE_URL } = require("./config");
+
 const getListFiles = (req, res) => {
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
+  const directoryPath = __dirname + "/static/";
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
       res.status(500).send({
@@ -12,7 +13,7 @@ const getListFiles = (req, res) => {
     files.forEach((file) => {
       fileInfos.push({
         name: file,
-        url: baseUrl + file,
+        url: BASE_URL + file,
       });
     });
     res.status(200).send(fileInfos);
@@ -20,7 +21,7 @@ const getListFiles = (req, res) => {
 };
 const download = (req, res) => {
   const fileName = req.params.name;
-  const directoryPath = __basedir + "/resources/static/assets/uploads/";
+  const directoryPath = __dirname + "/static/";
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
       res.status(500).send({

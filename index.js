@@ -1,12 +1,10 @@
 const cors = require("cors");
 const express = require("express");
+const { BASE_URL, PORT } = require("./src/config");
 const app = express();
 
-global.__basedir = __dirname;
-
-const PORT = process.env.PORT || 3001;
 const corsOptions = {
-  origin: `http://localhost:${PORT}`,
+  origin: BASE_URL,
 };
 
 app.use(cors(corsOptions));
