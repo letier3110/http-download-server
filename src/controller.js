@@ -34,7 +34,7 @@ const download = (req, res) => {
 
 const upload = (req, res) => {
   res.status(200).send({
-    message: "file uploaded " + err,
+    message: "file uploaded ",
   });
 };
 
