@@ -2,15 +2,13 @@ const fs = require('fs')
 const { BASE_URL } = require('./config')
 
 const getListFiles = (req, res) => {
-  const directoryPath = __dirname + '/static/'
-  console.log(directoryPath)
+  const directoryPath = __basedir + '/static/'
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
       res.status(500).send({
         message: 'Unable to scan files!'
       })
     }
-    console.log(files)
     let fileInfos = []
     files.forEach((file) => {
       fileInfos.push({
@@ -23,7 +21,7 @@ const getListFiles = (req, res) => {
 }
 const download = (req, res) => {
   const fileName = req.params.name
-  const directoryPath = __dirname + '/static/'
+  const directoryPath = __basedir + '/static/'
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
       res.status(500).send({

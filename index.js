@@ -3,6 +3,8 @@ const express = require('express')
 const { BASE_URL, PORT } = require('./src/config')
 const app = express()
 
+global.__basedir = __dirname;
+
 const corsOptions = {
   origin: BASE_URL
 }
